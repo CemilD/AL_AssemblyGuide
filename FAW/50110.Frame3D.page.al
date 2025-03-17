@@ -4,26 +4,57 @@ page 50110 Frame3D
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = FAWTable;
-    
+
     layout
     {
         area(Content)
         {
             group(Control1)
             {
+                field(FAWDescription; Rec.FAWDescription)
+                {
+                    ToolTip = 'Specifies the value of the FAW Description field.', Comment = '%FAW Beschreibung';
+                    Editable = false;
+                }
+                field(FAWNo; Rec.FAWNo)
+                {
+                    ToolTip = 'Specifies the value of the FAW No. field.', Comment = '%FAW Nummer';
+                    Style =  Favorable;
+                }
+
+
+
+                field(FAWfile; Rec.FAWfile)
+                {
+                    ToolTip = 'Specifies the value of the FAW File field.', Comment = '%FAW Datei';
+                    Style =  Favorable;
+                    
+                }
+                field(ItemNo; Rec.ItemNo)
+                {
+                    ToolTip = 'Specifies the value of the Item No. field.', Comment = '%Artikel Nummer';
+                }
+                field(SystemCreatedBy; Rec.SystemCreatedBy)
+                {
+                    ToolTip = 'Specifies the value of the SystemCreatedBy field.', Comment = '%';
+                }
+                field(owener; Rec.owener)
+                {
+                    ToolTip = 'Specifies the value of the Owner field.', Comment = '%Besitzer';
+                }
 
             }
 
-            usercontrol(WepageViewer;WebPageViewer)
+            usercontrol(WepageViewer; WebPageViewer)
             {
                 ApplicationArea = All;
 
                 trigger ControlAddInReady(CallbackUrl: Text)
                 begin
-                    CurrPage.WepageViewer.Navigate('https://www.3dfindit.com/iframe/widget_viewer?path=bosch_rexroth_mcd%2Findustrial_hydraulics%2Fpumps%2Fgerotor_pumps%2Fpgz_asmtab.prj&design=1');
+                    CurrPage.WepageViewer.Navigate('https://damassets.autodesk.com/content/dam/autodesk/privacy/wads.html');
                 end;
 
-                trigger Callback(Data: Text) 
+                trigger Callback(Data: Text)
                 begin
                     CurrPage.Close();
                 end;
@@ -31,22 +62,22 @@ page 50110 Frame3D
 
         }
     }
-    
+
     actions
     {
         area(Processing)
         {
             action(ActionName)
             {
-                
+
                 trigger OnAction()
                 begin
-                    
+
                 end;
             }
         }
     }
-    
+
     var
         myInt: Integer;
 }
